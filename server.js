@@ -1,10 +1,14 @@
 import express from "express";
 import { google } from "googleapis";
 import dotenv from "dotenv";
+import cors from "cors";
 
 dotenv.config();
 const app = express();
+app.use(cors());
+
 const PORT = process.env.PORT || 3000;
+
 
 const auth = new google.auth.JWT(
   process.env.GOOGLE_CLIENT_EMAIL,
