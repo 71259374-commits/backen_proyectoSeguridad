@@ -38,9 +38,10 @@ app.get("/api/estudiante/:dni", async (req, res) => {
         if (estudiante) res.json(estudiante)
         else res.status(404).json({ error: "No encontrado" })
     } catch (e) {
-        console.error(e)
-        res.status(500).json({ error: "Error al conectar con la hoja" })
+        console.error("❌ ERROR DETALLADO:", e);
+        res.status(500).json({ error: "Error al conectar con la hoja", detalle: e.message });
     }
+
 });
 
 app.listen(PORT, () => console.log(`Servidor corriendo en puerto ${PORT}`))
