@@ -39,7 +39,10 @@ app.get("/api/estudiante/:dni", async (req, res) => {
         else res.status(404).json({ error: "No encontrado" })
     } catch (e) {
         console.error("❌ ERROR DETALLADO:", e);
-        res.status(500).json({ error: "Error al conectar con la hoja", detalle: e.message });
+        res.status(500).json({
+            error: "Error al conectar con la hoja",
+            detalle: e.errors ? e.errors : e.message,
+        });
     }
 
 });
